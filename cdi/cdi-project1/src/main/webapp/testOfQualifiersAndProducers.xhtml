@@ -1,0 +1,16 @@
+<html xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+<h:head />
+<h:body>
+  <h:messages layout="table" globalOnly="true" showDetail="true"
+		showSummary="true" />
+
+Number of page views:#{testOfQualifiersAndProducers.numberPageViews}
+<h:form>
+		<br />
+		<h:commandButton value="Press" action="#{testOfQualifiersAndProducers.submit}" />
+	</h:form>
+</h:body>
+</html>

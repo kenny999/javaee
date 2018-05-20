@@ -1,0 +1,19 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+	template="convtemplate.xhtml">
+	
+    <ui:define name="content">
+	<h1>Insurances 2</h1>
+	<h:form>
+		<h:outputLabel for="item" value="Enter item to insure"/>
+		<h:inputText id="item" value="#{insuranceBean.item}"/>
+		<br/>
+		<h:commandButton action="#{insuranceBean.next2}" value="Next"/>
+	</h:form>
+	Current info #{insuranceBean.toString()}
+	
+    </ui:define>
+</ui:composition>

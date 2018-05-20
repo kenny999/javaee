@@ -1,0 +1,23 @@
+<h:html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:body>
+	<h2>Admin gui</h2>
+
+	<b>Skriv kundnr för kund att spåra</b>
+	<h:form>
+		<h:outputLabel for="kundnr" value="Kundnr " />
+		<h:inputText id="kundnr" value="#{adminGUI.traceConfig.kundnr}" />
+		<br />
+		<h:outputLabel for="numberRequests" value="Antal " />
+		<h:inputText id="numberRequests" value="#{adminGUI.traceConfig.numRequests}" />
+		<br />
+		<h:commandButton value="Press"
+			action="#{adminGUI.trace}" />
+	</h:form>
+
+	<br/>
+</h:body>
+</h:html>

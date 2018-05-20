@@ -1,0 +1,18 @@
+<h:html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:body>
+	<h1>Ange användarnamn för den som ska debuggas</h1>
+
+	<h:form>
+		<h:outputLabel for="user" value="Username "/>
+		<h:inputText id="varde1" value="#{userDebugBean.userName}" required="true"/>
+		<br/>
+		<h:commandButton action="#{userDebugBean.submit}" value="Tryck"/>
+		<br/>
+		<br/>
+	</h:form>
+</h:body>
+</h:html>

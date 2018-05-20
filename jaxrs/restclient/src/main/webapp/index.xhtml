@@ -1,0 +1,17 @@
+<h:html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head />
+<h:body>
+	<h:form>
+		<h:outputLabel for="testcase" value="Select test case" />
+		<br/>
+		<h:selectOneMenu id="testcase" value="#{mainController.testCase}">
+			<f:selectItems value="#{mainController.availableTestCases}"/>
+			 <f:ajax listener="#{mainController.onChange}" />
+		</h:selectOneMenu>
+	</h:form>
+</h:body>
+</h:html>

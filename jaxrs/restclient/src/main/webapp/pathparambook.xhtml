@@ -1,0 +1,24 @@
+<h:html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head />
+<h:body>
+This test case enables a GET request to http://localhost:8080/restserver/rest-prefix/books/{param}
+and displays the results of the retrieved book.
+<br/>
+	<h:form>
+		<h:outputLabel for="param" value="Enter value of path param" />
+		<br/>
+		<h:inputText id="param" value="#{pathParamBookController.param}" />
+		<br/>
+		<h:commandButton action="#{pathParamBookController.submit}" value="Press" />
+	</h:form>
+	<h:panelGroup rendered="#{not empty pathParamBookController.book}">
+	Name: #{pathParamBookController.book.name}<br/>
+	Author: #{pathParamBookController.book.author}<br/>
+	ISBN: #{pathParamBookController.book.isbn}<br/>
+	</h:panelGroup>
+</h:body>
+</h:html>

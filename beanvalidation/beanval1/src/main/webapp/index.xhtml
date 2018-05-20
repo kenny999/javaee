@@ -1,0 +1,34 @@
+<h:html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<f:metadata>
+  <f:viewAction phase="UPDATE_MODEL_VALUES" action="#{createController.check}" onPostback="true"/>
+</f:metadata>
+
+<h:body>
+	<h2>Beanval test</h2>
+
+	<h:form>
+		<h:messages/>
+		<h2>Point 1</h2>
+		<h:outputLabel for="x1" value="Enter x" />
+		<h:inputText id="x1" value="#{createController.coordinate.p1.x}" />
+		<br />
+		<h:outputLabel for="y1" value="Enter y" />
+		<h:inputText id="y1" value="#{createController.coordinate.p1.y}" />
+		<br />
+		<h2>Point 2</h2>
+		<h:outputLabel for="x2" value="Enter x" />
+		<h:inputText id="x2" value="#{createController.coordinate.p2.x}" />
+		<br />
+		<h:outputLabel for="y2" value="Enter y" />
+		<h:inputText id="y2" value="#{createController.coordinate.p2.y}" />
+		<br />
+		<h:commandButton value="Press"
+			action="#{createController.create}" />
+	</h:form>
+
+</h:body>
+</h:html>

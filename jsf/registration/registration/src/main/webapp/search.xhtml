@@ -1,0 +1,56 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+	template="#{constantsBean.mastertemplateSrc}">
+  <ui:define name="title">
+    #{msg.searchTitle}
+  </ui:define>
+  <ui:define name="content">
+  <h:form>  
+    <h:inputText id="userName" value="#{searchBean.userName}"
+				p:placeHolder="#{msg.userNamePlaceHolder}" required="true"
+				p:required="true" requiredMessage="#{msg.error.userNameNotEmpty}">
+      <f:validateLength minimum="#{constantsBean.userNameMinLength}" />
+ </h:inputText>
+ <h:message for="userName" />
+ <h:commandButton id="btn" action="#{searchBean.doSearch}"
+				value="#{msg.submit}">
+   <f:ajax execute="@form" render="searchResult" />
+ </h:commandButton> 
+ <h:panelGroup id="searchResult">
+     <ui:fragment rendered="#{searchBean.searchDone}">
+         <br />
+         <ui:fragment rendered="#{empty searchBean.searchResult}">
+#{msg.searchEmpty}
+         </ui:fragment>
+         <ui:fragment rendered="#{ ! empty searchBean.searchResult}">
+#{msg.searchResultHeading}
+             <h:dataTable value="#{searchBean.searchResult}" var="user">
+                 <h:column>
+                     <f:facet name="header">#{msg.userNameHeading}</f:facet>
+                         #{user.userName}
+                 </h:column>
+                 <h:column>
+                 <f:facet name="header">#{msg.birthDateHeading}</f:facet>
+                     #{searchBean.formatDate(user.birthDate)}
+                 </h:column>
+                 <h:column>
+                     <f:facet name="header">#{msg.homePageHeading}</f:facet>
+                         #{user.homePage}
+                 </h:column>
+                 <h:column>
+                     <f:facet name="header">#{msg.emailHeading}</f:facet>
+                         #{user.email}
+                 </h:column>
+             </h:dataTable>
+         </ui:fragment>   
+    </ui:fragment>
+    <ui:fragment rendered="#{not searchBean.searchDone}">
+    </ui:fragment>
+</h:panelGroup>
+</h:form>
+		<ui:debug />
+	</ui:define>
+</ui:composition>

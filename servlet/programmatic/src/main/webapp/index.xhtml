@@ -1,0 +1,44 @@
+<h:html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+</h:head>
+<h:body>
+<h2>Home page of this application</h2>
+<a href="usercontent/hellouser.xhtml">Go to user area</a>
+<br/>
+<a href="admincontent/helloadmin.xhtml">Go to admin area</a>
+<br/>
+<br/>
+
+<h:panelGroup layout="block" rendered="#{not loggedInUser.loggedIn}">
+<h:form>
+	<h:messages />
+	<h:outputLabel for="userName" value="Enter username "/>
+	<h:inputText id="userName" value="#{loginController.userName}"/>
+	<br/>
+	<h:outputLabel for="password" value="Enter password "/>
+	<h:inputSecret id="password" value="#{loginController.password}"/>
+	<br/>
+	<h:commandButton action="#{loginController.loginUser}" value="Press" />
+</h:form>
+</h:panelGroup>
+<h:panelGroup layout="block" rendered="#{loggedInUser.loggedIn}">
+<h:form>
+You are logged in as #{loggedInUser.userName}<br/>
+<h:panelGroup layout="block" rendered="#{loggedInUser.isInUserRole}">
+You are in user role
+</h:panelGroup>
+<h:panelGroup layout="block" rendered="#{loggedInUser.isInAdminRole}">
+You are in admin role
+</h:panelGroup>
+</h:form>
+</h:panelGroup>
+<br/>
+This is a demo of "programmatic login".<br/>
+The developer provides the login-form and calls HttpServletRequest.login to have the user logged in.<br/>
+<br/>
+Session timeout in this app is <b>1 minute.</b>
+</h:body>
+</h:html>

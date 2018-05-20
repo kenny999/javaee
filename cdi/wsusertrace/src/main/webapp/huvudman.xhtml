@@ -1,0 +1,29 @@
+<h:html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:body>
+	<h2>Huvudman gui</h2>
+
+	<b>Lägg till huvudman</b>
+	<h:form>
+		<h:outputLabel for="fornamn" value="Förnamn " />
+		<h:inputText id="fornamn" value="#{huvudmanGUI.huvudman.fornamn}" />
+		<br />
+		<h:outputLabel for="efternamn" value="Efternamn " />
+		<h:inputText id="efternamn" value="#{huvudmanGUI.huvudman.efternamn}" />
+		<br />
+		<h:outputLabel for="personnummer" value="Personnummer " />
+		<h:inputText id="personnummer" value="#{huvudmanGUI.huvudman.personnummer}" />
+		<br />
+		<h:outputLabel for="orgnummer" value="Orgnummer " />
+		<h:inputText id="orgnummer" value="#{huvudmanGUI.huvudman.orgnummer}" />
+		<br />
+		<h:commandButton value="Press"
+			action="#{huvudmanGUI.create}" />
+	</h:form>
+
+	<br/>
+</h:body>
+</h:html>

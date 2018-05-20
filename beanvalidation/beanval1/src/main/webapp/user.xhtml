@@ -1,0 +1,34 @@
+<h:html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<f:metadata>
+  <f:event type="preRenderView" listener="#{userController.preRenderView}"/>
+</f:metadata>
+
+<h:body>
+	<h2>Beanval test, user</h2>
+
+	<h:form>
+		<h:messages/>
+		<h2>User identity</h2>
+		<h:outputLabel for="firstName" value="Enter firstName" />
+		<h:inputText id="firstName" value="#{userController.user.firstName}" />
+		<br />
+		<h:outputLabel for="lastName" value="Enter lastName" />
+		<h:inputText id="lastName" value="#{userController.user.lastName}" />
+		<br />
+		<h:outputLabel for="socialSecurityNumber" value="Enter socialSecurityNumber" />
+		<h:inputText id="socialSecurityNumber" value="#{userController.user.socialSecurityNumber}" />
+		<br />
+		<h:commandButton value="Press (validation)"
+			action="#{userController.next1}" />
+		<br/>
+		<h:commandButton value="Press (no class-level validation)"
+			action="#{userController.next1NoValidation}" />
+		</h:form>
+
+(socialSecurityNumber ska sluta med udda siffra för att gillas)
+</h:body>
+</h:html>

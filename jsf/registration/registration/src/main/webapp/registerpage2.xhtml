@@ -1,0 +1,60 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+	template="#{constantsBean.mastertemplateSrc}">
+	<ui:define name="metadata">
+		<f:metadata>
+			<f:viewAction actionListener="#{registerBeanPage2.prereqPage2}" />  
+        </f:metadata>
+	</ui:define>
+    <ui:define name="title">
+        <div>#{msg.registerPage2Title}</div>
+    </ui:define>
+    <ui:define name="content">
+        #{msg.registerIntroductionPage2}
+        <h:form>
+            <h:inputHidden id="bothEmails" validator="#{bothEmailsValidator.validate}" value="true">
+                <f:attribute name="email1" value="#{email1}" />
+                <f:attribute name="email2" value="#{email2}" />
+            </h:inputHidden>
+            <h:message style="color:red" id="bothEmailsMsg" for="bothEmails" />
+            <br/>
+            <h:outputLabel for="email1" value="#{msg.enterEmail1}" />
+            <h:inputText id="email1" binding="#{email1}"
+				value="#{registerBeanPage2.email1}"
+				p:placeHolder="#{msg.emailPlaceHolder}" required="true"
+				p:required="true" requiredMessage="#{msg.error.emailNotEmpty}">
+                <f:ajax render="email1Msg" />
+            </h:inputText> 
+            <h:message style="color:red" id="email1Msg" for="email1" />
+            <br />
+            <h:outputLabel for="email2" value="#{msg.enterEmail2}" />
+			<h:inputText id="email2" binding="#{email2}"
+				value="#{registerBeanPage2.email2}"
+				p:placeHolder="#{msg.email2PlaceHolder}" required="true"
+				p:required="true" requiredMessage="#{msg.error.emailNotEmpty}">
+                <f:ajax render="email2Msg" />
+            </h:inputText> 
+            <h:message style="color:red" id="email2Msg" for="email2" /> 
+            <br />
+            <h:outputLabel for="homePage" value="#{msg.homePage}" />
+            <h:inputText id="homePage"
+				value="#{registerBeanPage2.homePage}"
+				p:placeHolder="#{msg.homePagePlaceHolder}"
+				converter="#{urlConverter}"
+				validator="#{urlValidator.validate}"
+				p:type="url">
+                <f:ajax />
+            </h:inputText> 
+            <h:message style="color:red" for="homePage" /> 
+            <br />
+            <h:outputLabel for="btn" value="#{msg.pressForRegistration}" />
+            <h:commandButton id="btn"
+				action="#{registerBeanPage2.register}" value="#{msg.submit}">
+                <f:ajax execute="@form" render="@all" />
+            </h:commandButton>
+		</h:form>
+    </ui:define>
+</ui:composition>

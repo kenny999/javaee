@@ -1,0 +1,22 @@
+<h:html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<f:metadata>
+</f:metadata>
+
+<h:body>
+	<h2>Beanval test, user</h2>
+
+	<h:form>
+		<h:messages />
+		<h2>Well done, press to finish</h2>
+		<h:commandButton value="Press (call CDI bean)"
+			action="#{userController.finishCDI}" />
+		<h:commandButton value="Press (call EJB)"
+			action="#{userController.finishEJB}" />
+	</h:form>
+
+</h:body>
+</h:html>

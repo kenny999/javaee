@@ -1,0 +1,31 @@
+<h:html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<f:metadata>
+  <f:event type="preRenderView" listener="#{userController.preRenderView}"/>
+</f:metadata>
+
+<h:body>
+	<h2>Beanval test, user</h2>
+
+	<h:form>
+		<h:messages/>
+		<h2>User address</h2>
+		<h:outputLabel for="street" value="Enter street" />
+		<h:inputText id="street" value="#{userController.user.street}" />
+		<br />
+		<h:outputLabel for="city" value="Enter city" />
+		<h:inputText id="city" value="#{userController.user.city}" />
+		<br />
+		<h:commandButton value="Press (validation)"
+			action="#{userController.next2}" />
+		<br/>
+		<h:commandButton value="Press (no class-level validation)"
+			action="#{userController.next2NoValidation}" />
+	</h:form>
+
+(2 första tecknen i gata och stad ska vara samma för att gillas)
+</h:body>
+</h:html>

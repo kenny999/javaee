@@ -1,0 +1,29 @@
+<h:html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head />
+<h:body>
+	<h1>Post a car to the server. Receive a garage</h1>
+	<h:form>
+		<h:outputLabel for="contenttype" value="Enter contenttype of the car (empty | application/json | application/xml)" />
+		<h:inputText id="contenttype" value="#{matchResourceController.contenttype}" />
+		<br/>
+		<h:outputLabel for="accept" value="Enter contenttype of the accepted garage (empty | application/json or application/xml)" />
+		<h:inputText id="accept" value="#{matchResourceController.accept}" />
+		<br/>
+		<h:commandButton action="#{matchResourceController.submit}" value="Press" />
+		
+		
+		<h:panelGroup id="garage" rendered="#{not empty matchResourceController.garage}">
+			<h2>Resulting garage</h2>
+				Name: #{matchResourceController.garage.name}<br/>
+				Number of cars: #{matchResourceController.garage.numberOfCars}<br/>
+				Street: #{matchResourceController.garage.street}<br/>
+			</h:panelGroup>
+		
+	</h:form>
+
+</h:body>
+</h:html>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+   <modelVersion>4.0.0</modelVersion>
+
+   <parent>
+      <artifactId>multitest3</artifactId>
+      <groupId>com.kenneth</groupId>
+      <version>1.0-SNAPSHOT</version>
+   </parent>
+
+   <artifactId>multitest3-web</artifactId>
+   <packaging>war</packaging>
+   <name>multitest3: WAR Module</name>
+
+   <dependencies>
+
+      <!-- Dependency on the EJB module so we can use it's services if needed -->
+      <dependency>
+         <groupId>com.kenneth</groupId>
+         <artifactId>multitest3-ejb-client</artifactId>
+         <type>ejb</type>
+         <scope>provided</scope>
+      </dependency>
+              <dependency>
+            <groupId>com.sun.mail</groupId>
+            <artifactId>mailapi</artifactId>
+            <version>1.5.0</version>
+        </dependency>
+   </dependencies>
+
+   <build>
+      <finalName>${project.artifactId}</finalName>
+      <plugins>
+         <plugin>
+            <artifactId>maven-war-plugin</artifactId>
+            <version>${version.war.plugin}</version>
+            <configuration>
+            <packagingExcludes>WEB-INF/lib/mailapi*.jar</packagingExcludes>
+               <!-- Java EE 7 doesn't require web.xml, Maven needs to catch up! -->
+               <failOnMissingWebXml>false</failOnMissingWebXml>
+            </configuration>
+         </plugin>
+      </plugins>
+   </build>
+
+</project>

@@ -1,0 +1,44 @@
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee
+		 http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	version="3.1">
+
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>Secured resources</web-resource-name>
+			<url-pattern>/resources/protected/*</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>**</role-name>
+		</auth-constraint>
+	</security-constraint>
+
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>Secured User Content</web-resource-name>
+			<url-pattern>/usercontent/*</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>user</role-name>
+		</auth-constraint>
+	</security-constraint>
+
+	<security-constraint>
+		<web-resource-collection>
+			<web-resource-name>Secured Admin Content</web-resource-name>
+			<url-pattern>/admincontent/*</url-pattern>
+		</web-resource-collection>
+		<auth-constraint>
+			<role-name>admin</role-name>
+		</auth-constraint>
+	</security-constraint>
+
+	<error-page>
+		<error-code>403</error-code>
+		<location>/WEB-INF/authfailed.html</location>
+	</error-page>
+
+	<session-config>
+		<session-timeout>1</session-timeout>
+	</session-config>
+</web-app>

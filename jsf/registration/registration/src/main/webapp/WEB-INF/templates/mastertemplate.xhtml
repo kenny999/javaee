@@ -1,0 +1,19 @@
+<html xmlns:ui="http://java.sun.com/jsf/facelets"
+ xmlns:f="http://java.sun.com/jsf/core"
+ xmlns:h="http://java.sun.com/jsf/html"
+ xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+<f:loadBundle basename="com.registration.messages.msg" var="msg"/>
+<ui:insert name="metadata"/>
+<h:head> 
+  <title>
+    <ui:insert name="title">#{msg.applicationTitle}</ui:insert>
+  </title>
+</h:head>
+<h:body>
+  <h:messages layout="table" globalOnly="true" showDetail="true" showSummary="true"/>
+  <ui:insert name="header">
+    <div><ui:include src="#{constantsBean.defaultheaderSrc}"/></div>
+  </ui:insert>
+  <ui:insert name="content"/>
+</h:body>
+</html>

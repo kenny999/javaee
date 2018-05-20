@@ -1,0 +1,28 @@
+<h:html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:body>
+	<h1>Välkommen till kalkylatorn</h1>
+
+	<h:form>
+		<h:outputLabel for="varde1" value="Värde 1 "/>
+		<h:inputText id="varde1" value="#{kalkylatorGUI.varde1}"/>
+		<br/>
+		<h:outputLabel for="varde2" value="Värde 2 "/>
+		<h:inputText id="varde2" value="#{kalkylatorGUI.varde2}"/>
+		<br/>
+		<h:commandButton action="#{kalkylatorGUI.plus}" value="+"/>
+		<br/>
+		<h:commandButton action="#{kalkylatorGUI.minus}" value="-"/>
+		<br/>
+		<h:commandButton action="#{kalkylatorGUI.times}" value="*"/>
+		<br/>
+		<h:commandButton action="#{kalkylatorGUI.divide}" value="/"/>
+		<br/>
+		<br/>
+		<h:outputText value="Resultat: #{kalkylatorGUI.result}"/>
+	</h:form>
+</h:body>
+</h:html>

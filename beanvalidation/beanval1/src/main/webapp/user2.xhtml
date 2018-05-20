@@ -1,0 +1,32 @@
+<h:html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<f:metadata>
+  <f:event type="preRenderView" listener="#{userController.preRenderView}"/>
+</f:metadata>
+
+<h:body>
+	<h2>Beanval test, user</h2>
+
+	<h:form>
+		<h:messages/>
+		<h2>Bank stuff</h2>
+		<h:outputLabel for="bank" value="Enter bank name" />
+		<h:inputText id="bank" value="#{userController.user.bank}" />
+		<br />
+		<h:outputLabel for="account" value="Enter account" />
+		<h:inputText id="account" value="#{userController.user.account}" />
+		<br />
+		<h:commandButton value="Press (validation)"
+			action="#{userController.last}" />
+				<br/>
+		<h:commandButton value="Press (no class-level validation)"
+			action="#{userController.lastNoValidation}" />
+	</h:form>
+(Om banken är SWEDBANK måste kontot starta med 1234 för att gillas.)<br/>
+(Om banken är NORDEA måste kontot starta med 2345 för att gillas.)<br/>
+
+</h:body>
+</h:html>

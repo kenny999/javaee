@@ -1,0 +1,20 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+	template="convtemplate.xhtml">
+	
+    <ui:define name="content">
+		<h1>Tv channel 2</h1>
+		<h:form>
+			<h:outputLabel for="favoriteProgram" value="Enter favorite program" />
+			<h:inputText id="favoriteProgram"
+				value="#{tvChannelBean.favoriteProgram}" />
+			<br />
+			<h:commandButton action="#{tvChannelBean.next2}" value="Next" />
+		</h:form>
+	Current info #{tvChannelBean.toString()}
+	
+    </ui:define>
+</ui:composition>

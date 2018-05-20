@@ -1,0 +1,21 @@
+<html>
+<head>
+</head>
+<body>
+<h2>Home page of this application</h2>
+<a href="usercontent/hellouser.xhtml">Go to user area</a>
+<br>
+<a href="admincontent/helloadmin.xhtml">Go to admin area</a>
+<br>
+<br>
+<br>
+This is a demo of "declarative, form-based login".<br>
+The access control is managed by the Java EE container.<br>
+When trying to access a protected resource, the Java EE container will prompt for a login,<br>
+and then communicates with the "login module", whose task is to check credentials
+towards a backend, and populate the user's "roles".<br>
+The Java EE container allows access to web resources according to declarations in web.xml.
+<br>
+In this model, it is not possible to access the login page manually.
+</body>
+</html>

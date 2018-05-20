@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"      
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:func="http://example.com/functions">
+	
+ <h:head><title>EL stuff</title></h:head>
+<h:body>
+
+<h:panelGroup rendered="true">
+1<br/>
+This is rendered as true is a literal expression
+<br/>
+</h:panelGroup>
+
+<h:panelGroup rendered="#{ctrl.propertyKalle eq 'Kalle'}">
+2<br/>
+This is rendered as a property equalled literal 'Kalle' (lexically), using eq
+<br/>
+</h:panelGroup>
+
+<h:panelGroup rendered="#{ctrl.propertyKalle == 'Kalle'}">
+3<br/>
+This is rendered as a property equalled literal 'Kalle' (lexically), using ==
+<br/>
+</h:panelGroup>
+
+<h:panelGroup rendered="#{ctrl['propertyKalle'] eq 'Kalle'}">
+4<br/>
+This is rendered as a property equalled literal 'Kalle' (lexically), accessed via brackets
+<br/>
+</h:panelGroup>
+
+<h:panelGroup rendered="#{ctrl.propertyOlle+5 > 10}">
+5<br/>
+This is rendered as an integer expression was true
+<br/>
+</h:panelGroup>
+
+<h:panelGroup rendered="#{empty ctrl.nullProperty}">
+6<br/>
+This is rendered as a property was null, tested using keyword empty
+<br/>
+</h:panelGroup>
+
+<h:panelGroup rendered="#{empty ctrl.emptyStringProperty}">
+7<br/>
+This is rendered as a property was empty string, tested using keyword empty
+<br/>
+</h:panelGroup>
+
+<h:panelGroup rendered="#{ctrl.card == 'SPADES'}">
+8<br/>
+This is rendered as an enum comparison was true
+<br/>
+</h:panelGroup>
+
+<h:panelGroup rendered="#{func:contains(ctrl.allstrings, 'SPADES')}">
+9<br/>
+This is rendered as a static function declared in taglib returned true
+<br/>
+</h:panelGroup>
+
+</h:body>
+</html>

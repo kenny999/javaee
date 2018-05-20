@@ -1,0 +1,82 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://xmlns.jcp.org/jsf/passthrough"
+	template="#{constantsBean.mastertemplateSrc}">
+  <ui:define name="title">
+      #{msg.registerTitle}
+  </ui:define>
+  <ui:define name="content">
+    #{msg.registerIntroduction}
+  <h:form id="register">
+    <h:outputLabel for="userName" value="#{msg.enterUserName}" />
+    <h:inputText id="userName" value="#{registerBean.userName}"
+				p:placeHolder="#{msg.userNamePlaceHolder}"
+				validator="#{userNameValidator.validate}"
+				required="true"
+				p:required="true"
+				requiredMessage="#{msg['error.userNameNotEmpty']}">
+      <f:ajax render="userNameMsg"/>
+    </h:inputText>
+    <h:message style="color:red" id="userNameMsg" for="userName" />
+    <br />
+    <h:inputHidden id="wholeBirthDay" value="true" validator="#{wholeBirthDayValidator.validate}">
+      <f:attribute name="birthYear" value="#{birthYear}" />
+      <f:attribute name="birthMonth" value="#{birthMonth}" />
+      <f:attribute name="birthDay" value="#{birthDay}" />
+    </h:inputHidden>
+    <h:message style="color:red" id="wholeBirthDayMsg" for="wholeBirthDay" />
+    <br/>
+    <h:outputLabel for="birthYear" value="#{msg.enterBirthYear}" />
+    <h:inputText id="birthYear" binding="#{birthYear}"
+				value="#{registerBean.birthYear}"
+				p:placeHolder="#{msg.birthYearPlaceHolder}"
+				required="true"
+				p:required="true"
+                validatorMessage="#{msg['error.birthYearOutOfRange']}"
+				requiredMessage="#{msg['error.birthYearNotEmpty']}"
+				converterMessage="#{msg['error.birthYearWrongFormat']}">
+       <f:validateLongRange minimum="1900"
+					maximum="#{constantsBean.currentYear}" />
+      <f:convertNumber integerOnly="true" groupingUsed="false" />
+      <f:ajax render="birthYearMsg"/>
+    </h:inputText>
+    <h:message style="color:red" id="birthYearMsg" for="birthYear" />
+    <br />
+    <h:outputLabel for="birthMonth" value="#{msg.enterBirthMonth}" />
+    <h:inputText id="birthMonth" binding="#{birthMonth}"
+				value="#{registerBean.birthMonth}"
+				p:placeHolder="#{msg.birthMonthPlaceHolder}"
+				required="true"
+				p:required="true"
+                validatorMessage="#{msg['error.birthMonthOutOfRange']}"
+				requiredMessage="#{msg['error.birthMonthNotEmpty']}"
+				converterMessage="#{msg['error.birthMonthWrongFormat']}">
+      <f:validateLongRange minimum="1" maximum="12" />
+      <f:ajax render="birthMonthMsg"/>
+    </h:inputText>
+    <h:message style="color:red" id="birthMonthMsg" for="birthMonth" />
+    <br />
+    <h:outputLabel for="birthDay" value="#{msg.enterBirthDay}" />
+    <h:inputText id="birthDay" binding="#{birthDay}"
+				value="#{registerBean.birthDay}"
+				p:placeHolder="#{msg.birthDayPlaceHolder}"
+				required="true"
+				p:required="true"
+				validatorMessage="#{msg['error.birthDayOutOfRange']}"
+				requiredMessage="#{msg['error.birthDayNotEmpty']}"
+				converterMessage="#{msg['error.birthDayWrongFormat']}">
+      <f:validateLongRange minimum="1" maximum="31" />
+      <f:ajax render="birthDayMsg"/>
+    </h:inputText>
+    <h:message style="color:red" id="birthDayMsg" for="birthDay" />
+    <br />
+    <h:outputLabel for="btn" value="#{msg.pressForNextPage}" />
+    <h:commandButton id="btn" action="#{registerBean.submitPage1}"
+				value="#{msg.submit}">
+      <f:ajax execute="@form" render="@all"/>
+    </h:commandButton>
+   </h:form>
+ </ui:define>
+</ui:composition>
