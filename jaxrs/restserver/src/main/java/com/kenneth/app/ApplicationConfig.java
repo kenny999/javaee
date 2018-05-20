@@ -12,6 +12,7 @@ import com.kenneth.BookResource;
 import com.kenneth.CarResource;
 import com.kenneth.GZIPEncoder;
 import com.kenneth.ParamsResource;
+import com.kenneth.PersonResource;
 import com.kenneth.TruckResource;
 
 @ApplicationPath("/rest-prefix")
@@ -24,6 +25,7 @@ public class ApplicationConfig extends Application {
         				BeverageResource.class,
         				GZIPEncoder.class,
         				CarResource.class,
-        				TruckResource.class));
+        				TruckResource.class,
+        				PersonResource.class));
     }
 }
