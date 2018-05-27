@@ -1,0 +1,22 @@
+<h:html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head />
+<h:body>
+	<h:form>
+		<h:outputLabel for="btn" value="Go to page 1"/>
+		<h:commandButton id ="btn" action="#{i1Controller.next}" value="Press"/>
+	</h:form>
+	<h:form>
+		<h:outputLabel for="btn" value="Go to page 2"/>
+		<h:commandButton id ="btn" action="#{i1Controller.next2}" value="Press"/>
+	</h:form>
+
+	<h:form>
+		<h:outputLabel for="btn" value="Stay at page"/>
+		<h:commandButton id ="btn" action="#{i1Controller.next3}" value="Press"/>
+	</h:form>
+</h:body>
+</h:html>

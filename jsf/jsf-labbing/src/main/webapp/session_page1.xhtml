@@ -1,0 +1,17 @@
+<h:html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head />
+
+<h:body>
+ Hello from #{sessionViewScoped.message}
+ <br/>
+  <h:link value="Next page" outcome="session_page2" />
+  <h:form>
+    <h:commandButton value="Destroy session"
+			action="#{sessionViewScoped.destroy}" />
+  </h:form>
+</h:body>
+</h:html>

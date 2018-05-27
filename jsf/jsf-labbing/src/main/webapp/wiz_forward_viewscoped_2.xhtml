@@ -1,0 +1,21 @@
+<h:html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head />
+<h:body>
+	<h3>Forward Wizard step 2</h3>
+	<h:form>
+		<h:outputLabel value="Neighbour" for="neighbour"/>
+		<h:inputText id="neighbour" value="#{wizForwardViewScoped2Controller.neighbour}"></h:inputText>
+		<br/>
+		<h:outputLabel value="Pet" for="pet"/>
+		<h:inputText id="pet" value="#{wizForwardViewScoped2Controller.pet}"></h:inputText>
+		<br/>
+		<h:commandButton value="Press" action="#{wizForwardViewScoped2Controller.submit}"/>
+		<br/>
+	</h:form>
+</h:body>
+
+</h:html>

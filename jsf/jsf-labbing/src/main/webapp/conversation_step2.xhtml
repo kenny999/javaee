@@ -1,0 +1,20 @@
+<h:html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head />
+
+<h:body>
+ 
+   <h:form>
+    <h:outputLabel for="street" value="Street: "/>
+     <h:inputText id="street" value="#{conversationBean.userBean.user.street}"/>
+  <br/>
+  <h:outputLabel for="homeTown" value="Home town: "/>
+     <h:inputText id="homeTown" value="#{conversationBean.userBean.user.homeTown}"/>
+  <h:commandButton value="Next" action="#{conversationBean.nextFromStep2}"/>
+   </h:form>
+ 
+</h:body>
+</h:html>

@@ -1,0 +1,17 @@
+<h:html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head />
+<h:body>
+	<h:form>
+		<h:outputLabel for="btn" value="Calculate synchronously "/>
+		<h:commandButton id ="btn" action="#{asyncController.sync}" value="Press"/>
+	</h:form>
+	<h:form>
+		<h:outputLabel for="btn" value="Calculate asynchronously "/>
+		<h:commandButton id ="btn" action="#{asyncController.async}" value="Press"/>
+	</h:form>
+</h:body>
+</h:html>

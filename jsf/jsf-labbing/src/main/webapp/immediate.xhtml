@@ -1,0 +1,67 @@
+<h:html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head />
+
+<h:form>
+	<label for="name">Enter name</label>
+	<h:inputText id="name" value="#{immediateController.name}"
+		immediate="true">
+		<f:validator validatorId="com.jsflabbing.NameValidator"></f:validator>
+		<f:ajax event="blur" render="nameMessage" />
+	</h:inputText>
+	<h:message for="name" id="nameMessage" style="color:red" />
+
+	<br />
+	<label for="address">Enter address</label>
+	<h:inputText id="address" value="#{immediateController.address}"
+		immediate="true">
+		<f:validator validatorId="com.jsflabbing.AddressValidator"></f:validator>
+	</h:inputText>
+	<h:message for="address" style="color:red" />
+
+	<br />
+	<h:commandButton id="doSubmit" value="Submit"
+		action="#{immediateController.doSubmit}" />
+	<br />
+	<h:commandButton id="doNotSubmit" value="DoNotSubmit"
+		action="#{immediateController.doNotSubmit}" immediate="true" />
+	<h:commandButton id="aBtn" value="AjaxBtn">
+		<f:ajax listener="#{immediateController.ajaxFunc}"
+			execute="name ajaxText" render="ajaxText nameMessage" />
+	</h:commandButton>
+
+	<h:outputText id="ajaxText" value="#{immediateController.myText}" />
+
+	<br />
+
+
+</h:form>
+
+
+<h:form id="myForm">
+
+	<f:ajax event="blur" render="m1 m2">
+
+		<h:outputLabel for="password" value="password" />
+		<h:inputText id="password" value="#{immediateController.password}">
+			<f:validateLength minimum="3" maximum="8" />
+		</h:inputText>
+		<h:message id="m1" for="password" style="color:red" />
+		<br />
+		<h:outputLabel for="password2" value="password again" />
+		<h:inputText id="password2" value="#{immediateController.password2}">
+			<f:validateLength minimum="3" maximum="8" />	
+			<f:validator validatorId="passwordValidator"/>	
+		</h:inputText>
+		<h:message id="m2" for="password2" style="color:red" />
+	</f:ajax>
+	<br />
+	<h:commandButton action="#{immediateController.setPassword}"
+		value="Press" />
+	<br />
+</h:form>
+<ui:debug />
+</h:html>

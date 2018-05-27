@@ -1,0 +1,32 @@
+<h:html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+	<f:metadata>
+		<f:viewAction action="#{conversationBean.initConversation}" />
+	</f:metadata>
+</h:head>
+
+<h:body>
+ 
+   <h:form>
+  <h:outputLabel for="firstName" value="First name: " />
+     <h:inputText id="firstName"
+			value="#{conversationBean.userBean.user.firstName}" />
+  <br />
+  <h:outputLabel for="lastName" value="Last name: " />
+     <h:inputText id="lastName"
+			value="#{conversationBean.userBean.user.lastName}" />
+  <br />
+  <h:outputLabel for="password" value="Password: " />
+     <h:inputSecret id="password"
+			value="#{conversationBean.userBean.user.password}" />
+  <br />
+  <h:commandButton value="Next"
+			action="#{conversationBean.nextFromStep1}" />
+   </h:form>
+
+</h:body>
+</h:html>

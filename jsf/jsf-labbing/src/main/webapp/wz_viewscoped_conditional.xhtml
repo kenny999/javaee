@@ -1,0 +1,76 @@
+<h:html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head />
+
+<h:body>
+
+	<h:panelGroup rendered="#{wzConditional.step == 1}"> 
+   <h:form>
+  <h:outputLabel for="firstName" value="First name: " />
+     <h:inputText id="firstName"
+				value="#{wzConditional.userBean.user.firstName}" />
+  <br />
+  <h:outputLabel for="lastName" value="Last name: " />
+     <h:inputText id="lastName"
+				value="#{wzConditional.userBean.user.lastName}" />
+  <br />
+  <h:outputLabel for="password" value="Password: " />
+     <h:inputSecret id="password"
+				value="#{wzConditional.userBean.user.password}" />
+  <br />
+  <h:commandButton value="Next" action="#{wzConditional.nextFromStep1}" />
+   </h:form>
+	</h:panelGroup>
+
+	<h:panelGroup rendered="#{wzConditional.step == 2}"> 
+   <h:form>
+  <h:outputLabel for="street" value="Street: " />
+     <h:inputText id="street"
+				value="#{wzConditional.userBean.user.street}" />
+  <br />
+  <h:outputLabel for="homeTown" value="Home town: " />
+     <h:inputText id="homeTown"
+				value="#{wzConditional.userBean.user.homeTown}" />
+  <br />
+  <h:commandButton value="Next" action="#{wzConditional.nextFromStep2}" />
+   </h:form>
+	</h:panelGroup>
+
+	<h:panelGroup rendered="#{wzConditional.step == 3}"> 
+ 
+   <h:form>
+  <h:outputLabel for="phone" value="Phone " />
+     <h:inputText id="phone"
+				value="#{wzConditional.userBean.user.phone}" />
+  <br />
+  <h:outputLabel for="title" value="Title: " />
+     <h:inputText id="title"
+				value="#{wzConditional.userBean.user.title}" />
+  <br />
+  <h:commandButton value="Finish"
+				action="#{wzConditional.finish}" />
+   </h:form>
+		<h:panelGroup rendered="#{wzConditional.finished}">
+ 	You registered:
+ 	<br />
+ 	 #{wzConditional.userBean.user.firstName}
+ 	<br />
+ 	 #{wzConditional.userBean.user.lastName}
+ 	<br />
+ 	 #{wzConditional.userBean.user.password}
+ 	<br />
+ 	 #{wzConditional.userBean.user.street}
+ 	<br />
+ 	 #{wzConditional.userBean.user.homeTown}
+ 	<br />
+ 	 #{wzConditional.userBean.user.phone}
+ 	<br />
+ 	 #{wzConditional.userBean.user.title}
+ 
+ </h:panelGroup>
+	</h:panelGroup>
+</h:body>
+</h:html>

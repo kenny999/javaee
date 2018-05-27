@@ -1,0 +1,14 @@
+<html xmlns:jsf="http://xmlns.jcp.org/jsf">
+<head jsf:id="h" />
+<body>
+	<form jsf:id="f">
+		<label for="firstName">First name:</label>
+		<input type="text" jsf:id="firstName" jsf:value="#{html5Bean.firstName}" />
+		<br/>
+		<input type="submit" value="Submit" jsf:action="#{html5Bean.dodo}" />
+		<div jsf:rendered="#{not empty html5Bean.firstName}">
+			Hello #{html5Bean.firstName}
+		</div>
+	</form>
+</body>
+</html>

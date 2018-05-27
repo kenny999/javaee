@@ -1,0 +1,20 @@
+<h:html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head/>
+<h:body>
+	<h3>Prg Wizard step 1</h3>
+	<h:form>
+		<h:outputLabel value="Name" for="name"/>
+		<h:inputText id="name" value="#{wizPrgViewScoped1Controller.name}"></h:inputText>
+		<br/>
+		<h:outputLabel value="Size" for="size"/>
+		<h:inputText id="size" value="#{wizPrgViewScoped1Controller.size}"></h:inputText>
+		<br/>
+		<h:commandButton value="Press" action="#{wizPrgViewScoped1Controller.submit}"/>
+		<br/>
+	</h:form>
+</h:body>
+
+</h:html>

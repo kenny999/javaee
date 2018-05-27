@@ -1,0 +1,27 @@
+<h:html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<f:metadata>
+	<f:viewParam id="id" name="userId" value="#{viewParamController.userId}"
+		required="true" />
+	<f:viewAction action="#{viewParamController.onLoad}"/>
+</f:metadata>
+
+<h:head />
+<h:body>
+	<h:message for="id" />
+
+	<h:panelGroup rendered="#{not facesContext.validationFailed}">
+hello world from viewparam2 page  #{viewParamController.userId} today
+
+	<h:form>
+		<h:outputLabel for="theBtn" value="A button to send view params to next page"/>
+		<h:commandButton id="theBtn" action="#{viewParamController.sendViewParamsToNextPage}" value="Press"/>
+	</h:form>
+</h:panelGroup>
+
+</h:body>
+
+</h:html>

@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+<h:body>
+
+    <h2>JSF Identify Browser Tab example</h2>
+
+    <h4>Output links</h4>
+    <h:panelGrid columns="2">
+        <h:link value="Enable client window" outcome="clientwindow" disableClientWindow="false"/>
+        <h:link value="Disable client window" outcome="clientwindow" disableClientWindow="true"/>
+    </h:panelGrid>
+
+    <h4>Command buttons</h4>
+    <h:form>
+        <h:commandButton value="Get client window" actionListener="#{clientWindowBean.getWindowID}"/>
+        <h:commandButton value="Enable client window" action="#{clientWindowBean.enableClientWindow}"/>
+        <h:commandButton value="Disable client window" action="#{clientWindowBean.disableClientWindow}"/>
+    </h:form>
+
+</h:body>
+</html>
