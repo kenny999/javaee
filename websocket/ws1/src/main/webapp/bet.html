@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Betting site</title>
+<script>
+	var ws = new WebSocket("ws://localhost:8080/ws1/bet");
+	ws.onmessage = function(event) {
+		var message = JSON.parse(event.data);
+		var node = document.getElementById("betsuser");
+		node.innerHTML = message.user;
+		document.getElementById("betsbet").innerHTML = message.bet;
+	}
+	
+	function send(){
+			var bet = document.getElementById("bet").value;
+			var user = document.getElementById("user").value;
+			var json = JSON.stringify({
+		        "bet":bet,
+		        "user": user
+		    });
+			ws.send(json);
+	};
+</script>
+</head>
+<body>
+	<h1>What is this?</h1>
+	An application simulating "bets" to be sent to all connected web browsers using websocket.
+	<br/>
+	Only the last bet is presented.
+	<h1>Enter your bet</h1>
+	 <label for="user">Enter your name </label>
+     <input type="text" size="51" id="user" placeholder="Name"/>
+     <br/>
+	 <label for="bet">Enter your bet </label>
+     <input type="number" size="51" id="bet" placeholder="Bet"/>
+     <button type="button" onclick="send();" >Send</button>
+     
+     <br/>
+     <b>Current bets:</b>
+     <div id="bets">
+     	<span id="betsuser"></span>
+     	<span>:</span>
+     	<span id="betsbet"></span>
+     </div>
+</body>
+</html>
