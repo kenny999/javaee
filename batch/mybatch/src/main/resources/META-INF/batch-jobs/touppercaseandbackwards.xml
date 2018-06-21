@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<job id="touppercaseandbackwards" xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+     version="1.0">
+    <step id="uppercase" next="backwards">
+        <chunk checkpoint-policy="item" item-count="10">
+        	<reader ref="uppercaseItemReader"></reader>
+        	<processor ref="uppercaseItemProcessor"></processor>
+        	<writer ref="uppercaseItemWriter"></writer>
+    	</chunk>
+    </step>
+    <step id="backwards">
+        <batchlet ref="backwardsBatchlet"></batchlet>
+        <end on="COMPLETED"/>
+    </step>
+</job>

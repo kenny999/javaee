@@ -1,0 +1,40 @@
+<h:html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head />
+
+<h:body>
+	<h1>Explanation</h1>
+	<p>
+	This program uses the JSR 352 batch API to run a batch. The batch uses strings as input. The first step of the batch transforms all strings to uppercase. The seconds step reverts all strings.
+	</p>
+	<h1>Press to start uppercaseandbackwards batch</h1>
+	<h:form>
+  <h:commandButton value="Press" action="#{batchController.dojob}"/>
+ </h:form>
+ 
+ 	<h:panelGroup layout="block" rendered="#{batchController.output.size() > 0}">
+ 	<h1>Input was</h1>
+ 	
+ 		<ul>
+ 			<ui:repeat value="#{batchController.input}" var="curr">
+ 			<li>
+ 				#{curr}
+ 			</li>
+ 			</ui:repeat>
+ 		</ul>
+ 	<h1>Output was</h1>
+ 	
+ 		<ul>
+ 			<ui:repeat value="#{batchController.output}" var="curr">
+ 			<li>
+ 				#{curr}
+ 			</li>
+ 			</ui:repeat>
+ 		</ul> 	
+ 	</h:panelGroup>
+ 
+</h:body>
+</h:html>
