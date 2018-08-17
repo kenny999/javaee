@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Purchase xmlns="http://NamespaceTest.com/Purchase" xmlns:ns2="http://NamespaceTest.com/CustomerTypes" xmlns:ns3="http://NamespaceTest.com/CommonTypes">
+    <PaymentMethod>MasterCard</PaymentMethod>
+    <CustomerDetails>
+        <ns2:Name>Lars Bandage</ns2:Name>
+        <ns2:DeliveryAddress>
+            <ns3:Line1>Norra Fagerviksvägen 1</ns3:Line1>
+            <ns3:Line2>86030 Sörberge</ns3:Line2>
+        </ns2:DeliveryAddress>
+        <ns2:BillingAddress>
+            <ns3:Line1>Skolgatan 21</ns3:Line1>
+            <ns3:Line2>88250 Långsele</ns3:Line2>
+        </ns2:BillingAddress>
+    </CustomerDetails>
+</Purchase>
