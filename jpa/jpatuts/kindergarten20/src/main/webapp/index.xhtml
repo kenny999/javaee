@@ -1,0 +1,29 @@
+<h:html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head />
+
+<h:body>
+	<h1>What is this</h1>
+	<p>
+	A paging application of the "Kindergarten" application.
+	</p>
+	<h:form>
+	<h:outputLabel for="numtocreate" value="Enter number to create "/>
+	<h:inputText id="numToCreate" value="#{kindergartenJSFBean.numToCreate}" />
+	<br/>
+	<h:outputLabel for="createmore" value="Press to create more children"/>
+  	<h:commandButton id="createmore" value="Press" action="#{kindergartenJSFBean.createMoreKids}"/>
+ </h:form>
+ 
+ <h:form>
+ 
+ 	<h:outputLabel for="browsekids" value="Browse kids"/>
+  	<h:commandButton id="browsekids" value="Press" action="#{kindergartenJSFBean.browseKids}"/>
+ 
+ </h:form>
+ 
+</h:body>
+</h:html>

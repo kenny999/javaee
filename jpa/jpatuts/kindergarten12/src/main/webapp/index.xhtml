@@ -1,0 +1,25 @@
+<h:html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head />
+
+<h:body>
+	<h1>Create data</h1>
+	<h:form>
+    <h:commandButton value="Press" action="#{kindergartenJSFBean.create}"/>
+ </h:form>
+
+
+
+	<h1>Search for child to edit</h1>
+	<h:form>
+	<h:inputText value="#{kindergartenJSFBean.childName}" />
+    <h:commandButton value="Press" action="#{kindergartenJSFBean.doIt}"/>
+ </h:form>
+ 
+ #{kindergartenJSFBean.error}
+ 
+</h:body>
+</h:html>

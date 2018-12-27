@@ -1,0 +1,20 @@
+<h:html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head />
+
+<h:body>
+	<h1>Change data in this form</h1>
+	<h:form>
+	Old value: 
+	<h:inputText value="#{editJSFBean.child.name}" />
+	<br/>
+    <h:commandButton value="Press" action="#{editJSFBean.doIt}"/>
+ </h:form>
+ 
+ #{editJSFBean.error}
+ 
+</h:body>
+</h:html>

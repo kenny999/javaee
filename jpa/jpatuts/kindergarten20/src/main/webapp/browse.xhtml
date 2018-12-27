@@ -1,0 +1,35 @@
+<h:html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head />
+
+<h:body>
+
+	Number of kids right now: #{browseController.numKids}
+	<br/>
+	Current page: #{browseController.currentPage}
+	<br/>
+	Number of pages: #{browseController.numPages}
+	
+	<h:dataTable value="#{browseController.childList}" var="o">
+		<h:column>
+			<f:facet name="header">Child name</f:facet>
+				#{o.name}
+		</h:column>
+   	</h:dataTable>
+	
+
+	<h:form>
+	<br/>
+	<h:outputLabel for="previous" value="Previous"/>
+  	<h:commandButton id="previous" value="Press" action="#{browseController.previous}"/>
+	<br/>
+	<h:outputLabel for="next" value="Next"/>
+  	<h:commandButton id="next" value="Press" action="#{browseController.next}"/>
+ </h:form>
+
+ 
+</h:body>
+</h:html>
