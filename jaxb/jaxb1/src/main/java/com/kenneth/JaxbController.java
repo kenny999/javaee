@@ -2,14 +2,19 @@ package com.kenneth;
 
 import java.io.InputStream;
 import java.io.Serializable;
+import java.net.URL;
 
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
+import javax.xml.XMLConstants;
 import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 import javax.xml.transform.stream.StreamSource;
+import javax.xml.validation.Schema;
+import javax.xml.validation.SchemaFactory;
+
+import org.xml.sax.SAXException;
 
 import com.namespacetest.commontypes.AddressType;
 import com.namespacetest.commontypes.PaymentMethodType;
@@ -36,17 +41,34 @@ public class JaxbController implements Serializable {
 	}
 
 	private void unmarshal() throws Exception {
+		
+		System.out.println("Entering unmarshal");
+		
 		JAXBContext jc = JAXBContext.newInstance(Purchase.class);
 		Unmarshaller unmarshaller = jc.createUnmarshaller();
 
         ClassLoader classLoader = Purchase.class.getClassLoader();
         InputStream xmlStream = classLoader.getResourceAsStream("xmlfiles/f1.xml");
         StreamSource xmlSource = new StreamSource(xmlStream);
-		Purchase purchase = (Purchase) unmarshaller.unmarshal(xmlSource);
+		
+        SchemaFactory sf = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI); 
+        
+		URL file = Purchase.class.getClassLoader().getResource("schema/Main.xsd");
+
+		Schema schema = sf.newSchema(file);
+      
+		unmarshaller.setSchema(schema);
+        
+        Purchase purchase = (Purchase) unmarshaller.unmarshal(xmlSource);
 		System.out.println(purchase.getPaymentMethod().toString());
 	}
 
 	private void marshal() throws Exception {
+		
+		System.out.println("Entering marshal");
+
+		System.out.println("Marshalling without schema validation");
+
 		JAXBContext jc = JAXBContext.newInstance(Purchase.class);
 
 		CustomerType customerType = new CustomerType();
@@ -68,20 +90,15 @@ public class JaxbController implements Serializable {
 		Marshaller marshaller = jc.createMarshaller();
 		marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 		marshaller.marshal(purchase, System.out);
-		
-		// TODO schema validation
-		
-		/*
+
+		System.out.println("Marshalling with schema validation");
+
         SchemaFactory sf = SchemaFactory.newInstance(XMLConstants.W3C_XML_SCHEMA_NS_URI); 
-        
-        ClassLoader classLoader = Purchase.class.getClassLoader();
-        InputStream xsdStream = classLoader.getResourceAsStream("schema/Main.xsd");
-        StreamSource xsdSource = new StreamSource(xsdStream);
-        Schema schema = sf.newSchema(xsdSource);
+		URL file = Purchase.class.getClassLoader().getResource("schema/Main.xsd");
+
+        Schema schema = sf.newSchema(file);
         
 		marshaller.setSchema(schema);
 		marshaller.marshal(purchase, System.out);
-		
-		*/
 	}
 }

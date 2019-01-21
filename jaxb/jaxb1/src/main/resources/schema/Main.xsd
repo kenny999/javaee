@@ -6,9 +6,9 @@
            targetNamespace="http://NamespaceTest.com/Purchase"
            xmlns:xs="http://www.w3.org/2001/XMLSchema"
            elementFormDefault="qualified">
-    <xs:import schemaLocation="CommonTypes.xsd"
+    <xs:import schemaLocation="./CommonTypes.xsd"
                namespace="http://NamespaceTest.com/CommonTypes" />
-    <xs:import schemaLocation="CustomerTypes.xsd"
+    <xs:import schemaLocation="./CustomerTypes.xsd"
                namespace="http://NamespaceTest.com/CustomerTypes" />    
     <xs:element name="Purchase">
         <xs:complexType>
