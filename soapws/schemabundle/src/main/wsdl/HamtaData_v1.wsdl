@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="HamtaData_v1"	 
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:wsoap12="http://schemas.xmlsoap.org/wsdl/soap12/" 
+	xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"	 
+	xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+	xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"	
+	xmlns:tns="http://www.kenneth.com/HamtaData/v1"
+	xmlns:hamtaReq10="http://www.kenneth.com/hamtadatarequest_v1_0"
+	xmlns:hamtaRes10="http://www.kenneth.com/hamtadataresponse_v1_0"
+	xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
+	xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"	
+	targetNamespace="http://www.kenneth.com/HamtaData/v1">
+
+	<!-- Define the (XML Schema) data types used by the web service -->
+	<wsdl:types>		
+		
+		<xs:schema targetNamespace="http://www.kenneth.com/HamtaData/v1">						
+			<xs:import namespace="http://www.kenneth.com/hamtadatarequest_v1_0" schemaLocation="./../schema/HamtaDataRequest_v1_0.xsd"/>
+			<xs:import namespace="http://www.kenneth.com/hamtadataresponse_v1_0" schemaLocation="./../schema/HamtaDataResponse_v1_0.xsd"/>						
+		</xs:schema>
+	</wsdl:types>
+	
+	<wsdl:message name="hamtaDataRequest_v1_0">
+		<wsdl:part name="request" element="hamtaReq10:HamtaDataRequest" />
+	</wsdl:message>
+	<wsdl:message name="hamtaDataResponse_v1_0">
+		<wsdl:part name="response" element="hamtaRes10:HamtaDataResponse" />
+	</wsdl:message>
+	
+	<wsdl:portType name="HamtaData">	 	
+        <wsdl:operation name="hamtaData">
+			<wsdl:input name="hamtaDataRequest_v1_0" message="tns:hamtaDataRequest_v1_0"/>
+			<wsdl:output name="hamtaDataResponse_v1_0" message="tns:hamtaDataResponse_v1_0"/>
+		</wsdl:operation>
+	</wsdl:portType>
+	 	
+	<!-- WSDL SOAP binding -->
+	<wsdl:binding name="HamtaDataSOAPBinding" type="tns:HamtaData">
+		<wsoap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>		
+		<wsdl:operation name="hamtaData">
+			<wsoap12:operation style="document" soapActionRequired="false" />
+			<wsdl:input name="hamtaDataRequest_v1_0">
+				<wsoap12:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output name="hamtaDataResponse_v1_0">
+				<wsoap12:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>						
+	</wsdl:binding>	
+			
+	<!-- WSDL service -->
+	<wsdl:service name="HamtaData_v1">
+		<wsdl:port name="SOAPOverHTTP" binding="tns:HamtaDataSOAPBinding">
+			<wsoap12:address location="http://localhost:8080" />
+		</wsdl:port>
+	</wsdl:service>	
+	
+</wsdl:definitions>
